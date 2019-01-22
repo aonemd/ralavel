@@ -31,13 +31,13 @@ end
 
 def create_procfiles
   create_file 'Procfile' do <<-EOF
-  server: bin/rails server
+server: bin/rails server
   EOF
   end
 
   create_file 'Procfile.dev' do <<-EOF
-  server: bin/rails server
-  assets: bin/webpack-dev-server
+server: bin/rails server
+assets: bin/webpack-dev-server
   EOF
   end
 end
