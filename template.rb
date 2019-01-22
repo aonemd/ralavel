@@ -21,6 +21,14 @@ def remove_gems
   end
 end
 
+def prepare_database_config
+  inside 'config' do
+    run 'cp database.yml database.yml.example'
+  end
+
+  run 'echo database.yml >> .gitignore'
+end
+
 def create_procfiles
   create_file 'Procfile' do <<-EOF
   server: bin/rails server
@@ -38,6 +46,7 @@ add_gems
 remove_gems
 
 after_bundle do
+  prepare_database_config
   create_procfiles
 
   git :init
