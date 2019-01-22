@@ -1,16 +1,18 @@
 def add_gems
   gem 'foreman'
 
-  gem_group :development do
-    gem 'rubocop'
-  end
+  gsub_file "Gemfile", /^group :development do$/, <<-EOF
+group :development do
+  gem 'rubocop'
+  EOF
 
-  gem_group :test do
-    gem 'webmock'
-    gem 'factory_bot'
-    gem 'faker'
-    gem 'mocha'
-  end
+  gsub_file "Gemfile", /^group :test do$/, <<-EOF
+group :test do
+  gem 'webmock'
+  gem 'factory_bot'
+  gem 'faker'
+  gem 'mocha'
+  EOF
 end
 
 def remove_gems
