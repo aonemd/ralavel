@@ -62,6 +62,13 @@ def prepare_frontend
 
   inside 'app/views/layouts' do
     gsub_file 'application.html.erb', /^.*stylesheet_link_tag.*$/, "    <%= stylesheet_pack_tag 'application' %>"
+    gsub_file 'application.html.erb', /^.*javascript_pack_tag.*$\n  <\/head>/, '  </head>'
+
+    application_javascript_tag = <<-EOF
+    <%= javascript_pack_tag 'application' %>
+  </body>
+    EOF
+    gsub_file 'application.html.erb', /^  <\/body>$/, application_javascript_tag.chomp
   end
 
   inside 'app/controllers' do
