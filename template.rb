@@ -46,13 +46,13 @@ def prepare_frontend
   # disable frontend default generators
   inside 'config' do
     generator_config = <<-EOF
-      config.generators do |g|
-        g.stylesheets     false
-        g.javascripts     false
-        g.helper          false
-        g.channel         assets: false
-      end
+    config.generators do |g|
+      g.stylesheets     false
+      g.javascripts     false
+      g.helper          false
+      g.channel         assets: false
     end
+  end
     EOF
     gsub_file 'application.rb', /^  end$/, generator_config.chomp
 
