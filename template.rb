@@ -42,7 +42,7 @@ assets: bin/webpack-dev-server
   end
 end
 
-def prepare_frontend
+def setup_frontend_folder
   # disable frontend default generators
   inside 'config' do
     generator_config = <<-EOF
@@ -91,7 +91,7 @@ remove_gems
 after_bundle do
   prepare_database_config
   create_procfiles
-  prepare_frontend
+  setup_frontend_folder
 
   git :init
   git add: "."
