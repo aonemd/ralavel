@@ -1,7 +1,7 @@
 ralavel
 ---
 
-A modern Ruby on Rails template
+A modern Ruby on Rails template for better frontend development
 
 ### Structure
 
