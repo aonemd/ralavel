@@ -25,6 +25,12 @@ developers are working on their backend APIs.
   on port `5000`
 - That's it! You can develop your app now!!
 
+### The Template
+
+I used regex extensively in this template. Thus, the code is not spaghetti,
+it's in fact a mix of different kinds of pasta. So if you see something you
+want to improve, please open an issue or send a pull request.
+
 ### License
 
 See [LICENSE](https://github.com/aonemd/ralavel/blob/master/LICENSE).
