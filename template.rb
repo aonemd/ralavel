@@ -85,6 +85,45 @@ end
   run 'mv app/javascript frontend'
 end
 
+def setup_vue_js
+  # install Vue.js
+  run 'bundle exec rails webpacker:install:vue'
+  run 'rm frontend/packs/hello_vue.js frontend/app.vue'
+  run 'bundle exec rails generate controller pages index'
+
+  inside 'frontend' do
+    create_file 'packs/application.js' do <<-EOF
+import Vue from 'vue/dist/vue.esm'
+import App from '../App.vue';
+
+new Vue({
+  el: '#app',
+  render: h => h(App)
+});
+    EOF
+    end
+
+    create_file 'App.vue' do <<-EOF
+<template>
+  <div>
+    <p>Hello, world</p>
+  </div>
+</template>
+    EOF
+    end
+
+    run 'mkdir components'
+  end
+
+  inside 'config' do
+    gsub_file 'routes.rb', /^  get .*$/, "  root to: 'pages#index'"
+  end
+
+  inside 'app/views/pages' do
+    gsub_file 'index.html.erb', /^.*$\n^.*$/, "<div id='app'></div>"
+  end
+end
+
 add_gems
 remove_gems
 
@@ -92,6 +131,7 @@ after_bundle do
   prepare_database_config
   create_procfiles
   setup_frontend_folder
+  setup_vue_js
 
   git :init
   git add: "."
