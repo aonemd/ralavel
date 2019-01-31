@@ -25,7 +25,7 @@ developers are working on their backend APIs.
   on port `5000`
 - That's it! You can develop your app now!!
 
-### The Template
+### Contribution
 
 I used regex extensively in this template. Thus, the code is not spaghetti,
 it's in fact a mix of different kinds of pasta. So if you see something you
