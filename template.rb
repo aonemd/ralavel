@@ -61,7 +61,7 @@ def setup_frontend_folder
   end
 
   inside 'app/views/layouts' do
-    gsub_file 'application.html.erb', /^.*stylesheet_link_tag.*$/, "    <%= stylesheet_pack_tag 'application' %>"
+    gsub_file 'application.html.erb', /^.*stylesheet_link_tag.*$/, ''
     gsub_file 'application.html.erb', /^.*javascript_pack_tag.*$\n  <\/head>/, '  </head>'
 
     application_javascript_tag = <<-EOF
